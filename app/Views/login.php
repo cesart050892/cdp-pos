@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $user_session = session();
 
@@ -13,7 +13,7 @@ $user_session = session();
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>POS - CRM</title>
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>/favicon.ico" />
     <link href="<?php echo base_url(); ?>/css/styles.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <script src="<?php echo base_url(); ?>/js/all.min.js"></script>
@@ -67,11 +67,10 @@ $user_session = session();
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Comidas Rapidas Mary <?php echo date('Y'); ?></div>
+                        <div class="text-muted">Copyright &copy; POS <?php echo date('Y'); ?></div>
                         <div>
-                            <a href="https://facebook.com/edel.net/" target="_blank">Facebook</a>
                             &middot;
-                            <a href="https://facebook.com" target="_blank">Website</a>
+                            <a href="https://github.com/cesart050892" target="_blank">Github</a>
                         </div>
                     </div>
                 </div>
