@@ -1,11 +1,10 @@
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Comidas Rapidas Mary <?php echo date('Y');?></div>
+            <div class="text-muted">Copyright &copy; POS <?php echo date('Y');?></div>
             <div>
-                <a href="https://facebook.com/edel.net/" target="_blank">Facebook</a>
                 &middot;
-                <a href="https://facebook.com" target="_blank">Website</a>
+                <a href="https://github.com/cesart050892" target="_blank">Github</a>
             </div>
         </div>
     </div>
