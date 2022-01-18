@@ -25,10 +25,11 @@ class Unidades extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
-            'activo'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-            ]
+            'activo' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'default'   => 1
+            ],
         ]);
 
         $this->forge->addKey('id', true);

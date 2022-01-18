@@ -34,8 +34,9 @@ class Clientes extends Migration
                 'constraint' => 100,
             ],
             'activo' => [
-                'type' => 'BOOLEAN',
-                'null' => true,
+                'type' => 'INT',
+                'constraint' => 10,
+                'default'   => 1
             ],
         ]);
         

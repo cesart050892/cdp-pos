@@ -30,8 +30,9 @@ class Cajas extends Migration
                 'constraint' => 10,
             ],
             'activo' => [
-                'type' => 'BOOLEAN',
-                'null' => true,
+                'type' => 'INT',
+                'constraint' => 10,
+                'default'   => 1
             ],
         ]);
         

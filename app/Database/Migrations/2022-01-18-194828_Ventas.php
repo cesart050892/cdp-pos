@@ -41,9 +41,10 @@ class Ventas extends Migration
                 'type'       => 'INT',
                 'constraint' => 10,
             ],
-            'activo'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
+            'activo' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'default'   => 1
             ],
         ]);
         
