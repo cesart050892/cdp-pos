@@ -36,12 +36,12 @@ class Configuracion extends BaseController
 	{
 		$data = [
 			'titulo' => 'Configuracion',
-			'nombre' => $this->configuracion->where('nombre', 'tienda_nombre')->first()['valor'],
-			'ruc' => $this->configuracion->where('nombre', 'tienda_ruc')->first()['valor'],
-			'telefono' => $this->configuracion->where('nombre', 'tienda_telefono')->first()['valor'],
-			'email' => $this->configuracion->where('nombre', 'tienda_email')->first()['valor'],
-			'direccion' => $this->configuracion->where('nombre', 'tienda_direccion')->first()['valor'],
-			'leyenda' => $this->configuracion->where('nombre', 'ticket_leyenda')->first()['valor']
+			'nombre' => $this->configuracion->where('nombre', 'tienda_nombre')->first(),
+			'ruc' => $this->configuracion->where('nombre', 'tienda_ruc')->first(),
+			'telefono' => $this->configuracion->where('nombre', 'tienda_telefono')->first(),
+			'email' => $this->configuracion->where('nombre', 'tienda_email')->first(),
+			'direccion' => $this->configuracion->where('nombre', 'tienda_direccion')->first(),
+			'leyenda' => $this->configuracion->where('nombre', 'ticket_leyenda')->first()
 		];
 
 		echo view('header');
@@ -60,27 +60,29 @@ class Configuracion extends BaseController
 			$this->configuracion->whereIn('nombre', ['tienda_direccion'])->set(['valor' => $this->request->getPost('tienda_direccion')])->update();
 			$this->configuracion->whereIn('nombre', ['ticket_leyenda'])->set(['valor' => $this->request->getPost('ticket_leyenda')])->update();
 
-			$validacion = $this->validate([
+			$file = $this->request->getFile('tienda_logo');
+
+			$rule = [
 				'tienda_logo' => [
 					'uploaded[tienda_logo]',
 					'mime_in[tienda_logo,image/png]',
 					'max_size[tienda_logo, 4096]'
-				]
-			]);
+				],
+			];
 
-			if ($validacion) {
+			if ($file->isValid()) {
 
-				$ruta_logo = "images/logotipo.png";
+				if ($this->validate($rule)) {
 
-				if (file_exists($ruta_logo)) {
-					unlink($ruta_logo);
+					if (file_exists(APPIMGS . "/logotipo.png"))
+						unlink(APPIMGS . "/logotipo.png");
+
+					$file->move(APPIMGS, 'logotipo.png'); // you can add $file->getExtension()
+
+				} else {
+					echo implode($this->validator->getErrors());
+					exit;
 				}
-
-				$img = $this->request->getFile('tienda_logo');
-				$img->move('./images', 'logotipo.png');
-			} else {
-				echo 'Error en la validacion';
-				exit;
 			}
 
 			return redirect()->to(base_url() . '/configuracion');
