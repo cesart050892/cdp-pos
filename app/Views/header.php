@@ -13,30 +13,30 @@ $user_session = session();
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>POS - CRM</title>
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>/favicon.ico" />
-    <link href="<?php echo base_url(); ?>/css/styles.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
-    <script src="<?php echo base_url(); ?>/js/all.min.js"></script>
-    <script src="<?php echo base_url(); ?>/js/jquery-3.5.1.min.js"></script>
-    <script src="<?php echo base_url(); ?>/js/jquery-ui/jquery-ui.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('favicon.ico') ?>" />
+    <link href="<?= base_url('css/styles.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('js/jquery-ui/jquery-ui.min.css') ?>" rel="stylesheet" />
+    <script src="<?= base_url('js/all.min.js') ?>"></script>
+    <script src="<?= base_url('js/jquery-3.5.1.min.js') ?>"></script>
+    <script src="<?= base_url('js/jquery-ui/jquery-ui.min.js') ?>"></script>
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="<?php echo base_url(); ?>/inicio">POS-CRM</a>
+        <a class="navbar-brand" href="<?= base_url('inicio') ?>">POS-CRM</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto mr-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo $user_session->nombre; ?> - <?php echo $user_session->rol; ?> <i class="fas fa-user fa-fw"></i></a>
+                    <?= $user_session->nombre; ?> - <?= $user_session->rol; ?> <i class="fas fa-user fa-fw"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>/Usuarios/cambiaPassword">Cambiar contraseña</a>
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>/Logs">Registro de actividad</a>
+                    <a class="dropdown-item" href="<?= base_url('Usuarios/cambiaPassword') ?>">Cambiar contraseña</a>
+                    <a class="dropdown-item" href="<?= base_url('Logs') ?>">Registro de actividad</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>/Usuarios/logout">Salir</a>
+                    <a class="dropdown-item" href="<?= base_url('Usuarios/logout') ?>/">Salir</a>
                 </div>
             </li>
         </ul>
@@ -53,13 +53,13 @@ $user_session = session();
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Productos">Productos</a>
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Unidades">Unidades</a>
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Categorias">Categorias</a>
+                                <a class="nav-link" href="<?= base_url('Productos') ?>">Productos</a>
+                                <a class="nav-link" href="<?= base_url('Unidades') ?>">Unidades</a>
+                                <a class="nav-link" href="<?= base_url('Categorias') ?>">Categorias</a>
                             </nav>
                         </div>
 
-                        <a class="nav-link" href="<?php echo base_url(); ?>/Clientes">
+                        <a class="nav-link" href="<?= base_url('Clientes') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>Clientes
                         </a>
 
@@ -70,16 +70,16 @@ $user_session = session();
                         </a>
                         <div class="collapse" id="menuCompras" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Compras/nuevo">Nueva compra</a>
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Compras">Compras</a>
+                                <a class="nav-link" href="<?= base_url('Compras/nuevo') ?>">Nueva compra</a>
+                                <a class="nav-link" href="<?= base_url('Compras') ?>">Compras</a>
                             </nav>
                         </div>
 
-                        <a class="nav-link" href="<?php echo base_url(); ?>/Ventas/venta">
+                        <a class="nav-link" href="<?= base_url('Ventas/venta') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>Caja
                         </a>
 
-                        <a class="nav-link" href="<?php echo base_url(); ?>/Ventas">
+                        <a class="nav-link" href="<?= base_url('Ventas') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-money-check-alt"></i></div>Ventas
                         </a>
 
@@ -90,7 +90,7 @@ $user_session = session();
                         </a>
                         <div class="collapse" id="menuReportes" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/productos/mostrarMinimos">Stock mínimo</a>
+                                <a class="nav-link" href="<?= base_url('productos/mostrarMinimos') ?>">Stock mínimo</a>
                             </nav>
                         </div>
 
@@ -101,9 +101,9 @@ $user_session = session();
                         </a>
                         <div class="collapse" id="subAdministracion" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Configuracion">Configuración</a>
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Usuarios">Usuarios</a>
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Roles">Roles</a>
+                                <a class="nav-link" href="<?= base_url('Configuracion') ?>">Configuración</a>
+                                <a class="nav-link" href="<?= base_url('Usuarios') ?>">Usuarios</a>
+                                <a class="nav-link" href="<?= base_url('Roles') ?>">Roles</a>
 
                             </nav>
                         </div>
