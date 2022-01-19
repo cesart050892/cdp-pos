@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UsuariosModel;
 use App\Models\CajasModel;
+use App\Models\ConfiguracionModel;
 use App\Models\RolesModel;
 use App\Models\LogsModel;
 
@@ -20,6 +21,7 @@ class Usuarios extends BaseController
 		$this->cajas = new CajasModel();
 		$this->roles = new RolesModel();
 		$this->logs = new LogsModel();
+		$this->configuracion = new ConfiguracionModel();
 
 		helper(['form']);
 
@@ -276,6 +278,7 @@ class Usuarios extends BaseController
 			if ($datosUsuario != null) {
 				if (password_verify($password, $datosUsuario['password'])) { // La funcion me devuelve los demas datos de ese usuario
 					$datosSesion = [
+						'tienda_nombre' => $this->configuracion->where('nombre','tienda_nombre')->first()['valor'],
 						'id_usuario' => $datosUsuario['id'],
 						'nombre' => $datosUsuario['nombre'],
 						'id_caja' => $datosUsuario['id_caja'],
