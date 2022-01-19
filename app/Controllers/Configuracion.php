@@ -34,13 +34,15 @@ class Configuracion extends BaseController
 
 	public function index($activo = 1)
 	{
-		$nombre = $this->configuracion->where('nombre', 'tienda_nombre')->first();
-		$ruc = $this->configuracion->where('nombre', 'tienda_ruc')->first();
-		$telefono = $this->configuracion->where('nombre', 'tienda_telefono')->first();
-		$email = $this->configuracion->where('nombre', 'tienda_email')->first();
-		$direccion = $this->configuracion->where('nombre', 'tienda_direccion')->first();
-		$leyenda = $this->configuracion->where('nombre', 'ticket_leyenda')->first();
-		$data = ['titulo' => 'Configuracion', 'nombre' => $nombre, 'ruc' => $ruc, 'telefono' => $telefono, 'email' => $email, 'direccion' => $direccion, 'leyenda' => $leyenda];
+		$data = [
+			'titulo' => 'Configuracion',
+			'nombre' => $this->configuracion->where('nombre', 'tienda_nombre')->first()['valor'],
+			'ruc' => $this->configuracion->where('nombre', 'tienda_ruc')->first()['valor'],
+			'telefono' => $this->configuracion->where('nombre', 'tienda_telefono')->first()['valor'],
+			'email' => $this->configuracion->where('nombre', 'tienda_email')->first()['valor'],
+			'direccion' => $this->configuracion->where('nombre', 'tienda_direccion')->first()['valor'],
+			'leyenda' => $this->configuracion->where('nombre', 'ticket_leyenda')->first()['valor']
+		];
 
 		echo view('header');
 		echo view('configuracion/configuracion', $data);
@@ -57,15 +59,15 @@ class Configuracion extends BaseController
 			$this->configuracion->whereIn('nombre', ['tienda_email'])->set(['valor' => $this->request->getPost('tienda_email')])->update();
 			$this->configuracion->whereIn('nombre', ['tienda_direccion'])->set(['valor' => $this->request->getPost('tienda_direccion')])->update();
 			$this->configuracion->whereIn('nombre', ['ticket_leyenda'])->set(['valor' => $this->request->getPost('ticket_leyenda')])->update();
-			
+
 			$validacion = $this->validate([
 				'tienda_logo' => [
 					'uploaded[tienda_logo]',
 					'mime_in[tienda_logo,image/png]',
-					'max_size[tienda_logo, 4096]'					
+					'max_size[tienda_logo, 4096]'
 				]
 			]);
-			
+
 			if ($validacion) {
 
 				$ruta_logo = "images/logotipo.png";
@@ -82,10 +84,8 @@ class Configuracion extends BaseController
 			}
 
 			return redirect()->to(base_url() . '/configuracion');
-		}
-		else {
+		} else {
 			//return $this->editar($this->request->getPost('id'), $this->validator);
 		}
 	}
-
 }
